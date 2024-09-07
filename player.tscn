@@ -1,4 +1,4 @@
-[gd_scene load_steps=525 format=3 uid="uid://42jet4a0ytc0"]
+[gd_scene load_steps=526 format=3 uid="uid://42jet4a0ytc0"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ibmdq"]
 [ext_resource type="Texture2D" uid="uid://bje3i7gs22w5h" path="res://renderSpriteIdle.png" id="2_5g4hb"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bk11awiy74oua" path="res://renderColaJump.png" id="3_awh1c"]
 [ext_resource type="Texture2D" uid="uid://d1v6dq77yjaxy" path="res://renderjump.png" id="3_emt3k"]
 [ext_resource type="Texture2D" uid="uid://c1vf1eb34r4fl" path="res://render.png" id="3_epgj0"]
+[ext_resource type="Texture2D" uid="uid://dg3p57n3buts2" path="res://ze coca cola dash.png" id="5_8vkc8"]
 [ext_resource type="Texture2D" uid="uid://v5ljqlrld2wk" path="res://renderCocaRun.png" id="5_a0jlq"]
 [ext_resource type="Texture2D" uid="uid://bt5rahk867suu" path="res://renderColaIdle.png" id="5_rutiy"]
 [ext_resource type="Texture2D" uid="uid://d4khbbixcm7kn" path="res://renderSpriteJump.png" id="8_jeer8"]
@@ -2346,7 +2347,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f0nic")
 }],
-"loop": true,
+"loop": false,
 "name": &"Jump Cola",
 "speed": 32.0
 }, {
@@ -2535,7 +2536,10 @@ animations = [{
 "name": &"Run Sprite",
 "speed": 60.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_8vkc8")
+}],
 "loop": true,
 "name": &"dash cola",
 "speed": 5.0
@@ -3096,7 +3100,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7ldub")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump Watter",
 "speed": 60.0
 }, {
@@ -3281,7 +3285,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1q4p3")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump sprite",
 "speed": 60.0
 }, {
@@ -3688,4 +3692,14 @@ sprite_frames = SubResource("SpriteFrames_iovd4")
 animation = &"idle Cola"
 autoplay = "idle Cola"
 
+[node name="DashCola" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -2)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_8vkc8")
+
+[node name="dash_timer" type="Timer" parent="."]
+wait_time = 0.2
+
 [connection signal="Agua_refri" from="." to="." method="_on_agua_refri"]
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]

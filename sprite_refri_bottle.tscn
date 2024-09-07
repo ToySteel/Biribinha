@@ -457,5 +457,9 @@ texture = ExtResource("2_r2fv0")
 region_enabled = true
 region_rect = Rect2(20.339, 4, 7.75022, 12)
 
+[node name="Bug_Fixer" type="Timer" parent="."]
+wait_time = 0.2
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Bug_Fixer" to="." method="_on_bug_fixer_timeout"]
