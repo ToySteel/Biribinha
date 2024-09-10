@@ -127,7 +127,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hurt",
-"speed": 15.0
+"speed": 20.0
 }, {
 "frames": [],
 "loop": true,
@@ -180,6 +180,7 @@ position = Vector2(1, -8.5)
 shape = SubResource("RectangleShape2D_vwrac")
 
 [node name="Timer" type="Timer" parent="hitbox"]
+wait_time = 0.362
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="hitbox" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="hitbox/Timer" to="hitbox" method="_on_timer_timeout"]
