@@ -3672,11 +3672,7 @@ script = ExtResource("1_ibmdq")
 position = Vector2(-2, 0)
 shape = SubResource("CapsuleShape2D_po17d")
 
-[node name="Camera" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
-limit_left = 0
-limit_top = 0
-limit_right = 2800
+[node name="remote" type="RemoteTransform2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
@@ -3717,3 +3713,4 @@ debug_color = Color(0.980694, 0, 0.377487, 0.42)
 
 [connection signal="Agua_refri" from="." to="." method="_on_agua_refri"]
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]

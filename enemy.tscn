@@ -171,7 +171,7 @@ animation = &"hurt"
 autoplay = "walk"
 
 [node name="wall_detector" type="RayCast2D" parent="."]
-target_position = Vector2(-11, 0)
+target_position = Vector2(-13, 0)
 
 [node name="hitbox" parent="." instance=ExtResource("3_dhyuf")]
 

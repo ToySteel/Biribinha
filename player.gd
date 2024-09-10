@@ -23,6 +23,7 @@ signal Agua_refri
 @onready var animationAgua := $animAgua
 @onready var animationSprite := $animSprite
 @onready var animationCoca := $animCola
+@onready var remote_transform := $remote
 #variaveis de animaçao
 var animIdle = "idle Watter"
 var animJump = "jump Watter"
@@ -169,3 +170,11 @@ func spawn_ghost(delta):
 		
 		# Reseta o tempo
 		time_since_last_ghost = 0
+
+
+func _on_hurtbox_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemies"):
+		queue_free()
+func follow_camera(camera):
+	var camera_path = camera.get_path()
+	remote_transform.remote_path = camera_path
