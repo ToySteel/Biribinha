@@ -1,19 +1,19 @@
-[gd_scene load_steps=526 format=3 uid="uid://42jet4a0ytc0"]
+[gd_scene load_steps=527 format=3 uid="uid://42jet4a0ytc0"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ibmdq"]
-[ext_resource type="Texture2D" uid="uid://bje3i7gs22w5h" path="res://renderSpriteIdle.png" id="2_5g4hb"]
-[ext_resource type="Texture2D" uid="uid://bk3hpptymmehr" path="res://renderSpriteRUn.png" id="2_d1evo"]
-[ext_resource type="Texture2D" uid="uid://j0ugayvpf0y7" path="res://renderidle.png" id="2_df3kj"]
-[ext_resource type="Texture2D" uid="uid://bk11awiy74oua" path="res://renderColaJump.png" id="3_awh1c"]
-[ext_resource type="Texture2D" uid="uid://d1v6dq77yjaxy" path="res://renderjump.png" id="3_emt3k"]
-[ext_resource type="Texture2D" uid="uid://c1vf1eb34r4fl" path="res://render.png" id="3_epgj0"]
-[ext_resource type="Texture2D" uid="uid://dg3p57n3buts2" path="res://ze coca cola dash.png" id="5_8vkc8"]
-[ext_resource type="Texture2D" uid="uid://v5ljqlrld2wk" path="res://renderCocaRun.png" id="5_a0jlq"]
-[ext_resource type="Texture2D" uid="uid://bt5rahk867suu" path="res://renderColaIdle.png" id="5_rutiy"]
-[ext_resource type="Texture2D" uid="uid://d4khbbixcm7kn" path="res://renderSpriteJump.png" id="8_jeer8"]
+[ext_resource type="Texture2D" uid="uid://dpy5rcnfylr08" path="res://sprites/renderSpriteIdle.png" id="2_5g4hb"]
+[ext_resource type="Texture2D" uid="uid://coc0kvi20bdb3" path="res://sprites/renderSpriteRUn.png" id="2_d1evo"]
+[ext_resource type="Texture2D" uid="uid://dy6arpxhowyw5" path="res://sprites/renderidle.png" id="2_df3kj"]
+[ext_resource type="Texture2D" uid="uid://dumje5g4js0ss" path="res://sprites/renderColaJump.png" id="3_awh1c"]
+[ext_resource type="Texture2D" uid="uid://dg6i5md4kxf6b" path="res://sprites/renderjump.png" id="3_emt3k"]
+[ext_resource type="Texture2D" uid="uid://cic2n3jmh7ajl" path="res://sprites/render.png" id="3_epgj0"]
+[ext_resource type="Texture2D" uid="uid://cujh7rqk3grby" path="res://sprites/ze coca cola dash.png" id="5_8vkc8"]
+[ext_resource type="Texture2D" uid="uid://b43y2wcgip67g" path="res://sprites/renderCocaRun.png" id="5_a0jlq"]
+[ext_resource type="Texture2D" uid="uid://b5aa71m21s6xk" path="res://sprites/renderColaIdle.png" id="5_rutiy"]
+[ext_resource type="Texture2D" uid="uid://dyxgqhsyrw8yg" path="res://sprites/renderSpriteJump.png" id="8_jeer8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_po17d"]
-height = 44.0
+height = 52.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w4qiw"]
 atlas = ExtResource("2_5g4hb")
@@ -3660,8 +3660,12 @@ animations = [{
 "speed": 60.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nudd4"]
+size = Vector2(24, 41)
+
 [node name="player" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
+collision_mask = 15
 script = ExtResource("1_ibmdq")
 
 [node name="collision" type="CollisionShape2D" parent="."]
@@ -3672,6 +3676,7 @@ shape = SubResource("CapsuleShape2D_po17d")
 zoom = Vector2(1.5, 1.5)
 limit_left = 0
 limit_top = 0
+limit_right = 2800
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
@@ -3700,6 +3705,15 @@ texture = ExtResource("5_8vkc8")
 
 [node name="dash_timer" type="Timer" parent="."]
 wait_time = 0.2
+
+[node name="hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="Collision" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(-2, -2.5)
+shape = SubResource("RectangleShape2D_nudd4")
+debug_color = Color(0.980694, 0, 0.377487, 0.42)
 
 [connection signal="Agua_refri" from="." to="." method="_on_agua_refri"]
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]

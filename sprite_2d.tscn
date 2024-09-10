@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dtefkrt4ptuj2"]
 
-[ext_resource type="Texture2D" uid="uid://dg3p57n3buts2" path="res://ze coca cola dash.png" id="1_cqv5q"]
+[ext_resource type="Texture2D" uid="uid://cujh7rqk3grby" path="res://sprites/ze coca cola dash.png" id="1_cqv5q"]
 [ext_resource type="Script" path="res://sprite_2d.gd" id="2_0550k"]
 
 [node name="Sprite2D" type="Sprite2D"]

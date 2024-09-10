@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvvfgn46d8qrq"]
+
+[ext_resource type="Script" path="res://goal.gd" id="1_he0kf"]
+[ext_resource type="Texture2D" uid="uid://cuihnq6dr082o" path="res://assests/Mini FX, Items & UI/Common Pick-ups/Coin (16 x 16).png" id="2_k1k2a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a8pub"]
+radius = 14.0
+
+[node name="goal" type="Area2D"]
+script = ExtResource("1_he0kf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 0)
+texture = ExtResource("2_k1k2a")
+region_enabled = true
+region_rect = Rect2(0, 0, 16.0724, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_a8pub")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
