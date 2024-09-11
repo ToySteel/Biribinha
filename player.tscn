@@ -2536,17 +2536,34 @@ animations = [{
 "name": &"Run Sprite",
 "speed": 60.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_8vkc8")
-}],
+"frames": [],
 "loop": true,
-"name": &"dash cola",
+"name": &"die coca",
 "speed": 5.0
 }, {
 "frames": [],
 "loop": true,
-"name": &"double jump sprite",
+"name": &"die sprite",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"die watter",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"hurt coca",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"hurt sprite",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"hurt watter",
 "speed": 5.0
 }, {
 "frames": [{
@@ -3676,22 +3693,10 @@ shape = SubResource("CapsuleShape2D_po17d")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
-[node name="animAgua" type="AnimatedSprite2D" parent="."]
+[node name="anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_iovd4")
 animation = &"idle Watter"
 autoplay = "idle Watter"
-
-[node name="animSprite" type="AnimatedSprite2D" parent="."]
-visible = false
-sprite_frames = SubResource("SpriteFrames_iovd4")
-animation = &"idle Cola"
-autoplay = "Idle Sprite"
-
-[node name="animCola" type="AnimatedSprite2D" parent="."]
-visible = false
-sprite_frames = SubResource("SpriteFrames_iovd4")
-animation = &"idle Cola"
-autoplay = "idle Cola"
 
 [node name="DashCola" type="Sprite2D" parent="."]
 visible = false
@@ -3710,6 +3715,14 @@ collision_mask = 4
 position = Vector2(-2, -2.5)
 shape = SubResource("RectangleShape2D_nudd4")
 debug_color = Color(0.980694, 0, 0.377487, 0.42)
+
+[node name="ray_right" type="RayCast2D" parent="."]
+target_position = Vector2(18, 0)
+collision_mask = 4
+
+[node name="ray_left" type="RayCast2D" parent="."]
+target_position = Vector2(-22, 0)
+collision_mask = 4
 
 [connection signal="Agua_refri" from="." to="." method="_on_agua_refri"]
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]

@@ -3,6 +3,8 @@ extends CharacterBody2D
 # Variáveis básicas
 const SPEED = 150.0
 const JUMP_FORCE = -400.0
+@export var player_life := 10
+var knockback_vector := Vector2.ZERO
 var direction
 #Pulo duplo
 var can_double_jump = false
@@ -20,14 +22,15 @@ var can_dash = false
 signal Bug_fixer
 signal Agua_refri
 #definiçao de animaçao em variaveis comuns de pasta
-@onready var animationAgua := $animAgua
-@onready var animationSprite := $animSprite
-@onready var animationCoca := $animCola
+@onready var animation := $anim
+#@onready var animationSprite := $animSprite
+#@onready var animationCoca := $animCola
 @onready var remote_transform := $remote
 #variaveis de animaçao
 var animIdle = "idle Watter"
 var animJump = "jump Watter"
 var animRum = "run watter"
+
 
 # Ghosting
 @onready var ghost_scene = preload("res://sprite_2d.tscn")
@@ -72,9 +75,9 @@ func _physics_process(delta):
 		velocity.x = dash_direction * DASH_SPEED
 		velocity.y = 0
 		spawn_ghost(delta)
-		get_node("animAgua").visible = false
-		get_node("animSprite").visible = false
-		get_node("animCola").visible = false
+		get_node("anim").visible = false
+		#get_node("animSprite").visible = false
+		#get_node("animCola").visible = false
 		get_node("DashCola").visible = true
 		emit_signal("Bug_fixer")
 		can_dash = false
@@ -83,13 +86,18 @@ func _physics_process(delta):
 	direction = Input.get_axis("ui_left", "ui_right")
 	if !dashing:
 		if direction != 0:
-			animationAgua.scale.x = direction
-			animationSprite.scale.x = direction
-			animationCoca.scale.x = direction
+			animation.scale.x = direction
+			#animationSprite.scale.x = direction
+			#animationCoca.scale.x = direction
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 	############################################################
+	
+	if knockback_vector != Vector2.ZERO:
+		velocity = knockback_vector
+	
+	
 	_set_state()
 	move_and_slide()
 #voltar a estado inicial
@@ -99,9 +107,9 @@ func _on_agua_refri():
 	animIdle = "idle Watter"
 	animJump = "jump Watter"
 	animRum = "run watter"
-	get_node("animAgua").visible = true
-	get_node("animSprite").visible = false
-	get_node("animCola").visible = false
+	#get_node("anim").visible = true
+	#get_node("animSprite").visible = false
+	#get_node("animCola").visible = false
 	print("troca")
 #garafa de sprite
 func _on_sprite_refri_sprite_refri():
@@ -110,9 +118,9 @@ func _on_sprite_refri_sprite_refri():
 	animIdle = "Idle Sprite"
 	animJump = "jump sprite"
 	animRum = "Run Sprite"
-	get_node("animAgua").visible = false
-	get_node("animSprite").visible = true
-	get_node("animCola").visible = false
+	#get_node("anim").visible = false
+	#get_node("animSprite").visible = true
+	#get_node("animCola").visible = false
 	can_double_jump = true
 	has_double_jumped = false
 	print("troca")
@@ -126,9 +134,9 @@ func _on_coca_refri_coca_refri():
 	animIdle = "idle Cola"
 	animJump = "Jump Cola"
 	animRum = "run Cola"
-	get_node("animAgua").visible = false
-	get_node("animSprite").visible = false
-	get_node("animCola").visible = true
+	#get_node("anim").visible = true
+	#get_node("animSprite").visible = false
+	#get_node("animCola").visible = true
 	print("troca")
 #animaçoes legais
 func _set_state():
@@ -140,19 +148,19 @@ func _set_state():
 	elif direction != 0:
 		state = animRum
 		
-	if animationAgua.name != state:
-		animationAgua.play(state)
-	if animationSprite.name != state:
-		animationSprite.play(state)
-	if animationCoca.name != state:
-		animationCoca.play(state)
+	if animation.name != state:
+		animation.play(state)
+	#if animationSprite.name != state:
+		#animationSprite.play(state)
+	#if animationCoca.name != state:
+		#animationCoca.play(state)
 #quando o dash acabar
 func _on_dash_timer_timeout():
 	dashing = false
 	velocity.x = dash_direction * 0
-	get_node("animAgua").visible = true
-	get_node("animSprite").visible = false
-	get_node("animCola").visible = false
+	get_node("anim").visible = true
+	#get_node("animSprite").visible = false
+	#get_node("animCola").visible = false
 	get_node("DashCola").visible = false
 	emit_signal("Agua_refri")
 	$dash_timer.stop()
@@ -173,8 +181,25 @@ func spawn_ghost(delta):
 
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemies"):
-		queue_free()
+	#if body.is_in_group("enemies"):
+		#queue_free()
+		if player_life <0:
+			queue_free()
+		else:
+			if $ray_right.is_colliding():
+				take_damage(Vector2(-200,-200))
+			if $ray_left.is_colliding():
+				take_damage(Vector2(200,-200))
 func follow_camera(camera):
 	var camera_path = camera.get_path()
 	remote_transform.remote_path = camera_path
+func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
+	player_life -= 1
+	
+	if knockback_force != Vector2.ZERO:
+		knockback_vector = knockback_force
+		
+		var knockback_tween := get_tree().create_tween()
+		knockback_tween.tween_property(self, "knockback_vector", Vector2.ZERO, duration)
+		animation.modulate = Color(1, 0.426, 0.357)
+		knockback_tween.tween_property(animation, "modulate", Color(1, 1, 1, 1), duration)

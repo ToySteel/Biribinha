@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var direction := -1
-const SPEED = 1400.0
+const SPEED = 100.0
 @onready var texture := $AnimatedSprite2D
 @onready var wall_detector := $wall_detector
 @onready var anim := $AnimatedSprite2D
@@ -22,5 +22,5 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-	velocity.x = direction * SPEED * delta
+	velocity.x = direction * SPEED 
 	move_and_slide()
