@@ -36,7 +36,8 @@ var animRum = "run watter"
 @onready var ghost_scene = preload("res://sprite_2d.tscn")
 var ghost_timer = 0.01  # Tempo entre fantasmas
 var time_since_last_ghost = 0
-
+#func _ready():
+	#emit_signal("Agua_refri")
 # Adiciona gravidade
 func _physics_process(delta):
 	# Aplica gravidade
