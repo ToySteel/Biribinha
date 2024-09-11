@@ -1,6 +1,6 @@
 extends CharacterBody2D
 #VARIAVEIS GERAIS
-# Variáveis básicas
+#Variáveis básicas
 const SPEED = 150.0
 const JUMP_FORCE = -400.0
 @export var player_life := 10
@@ -30,8 +30,6 @@ signal Agua_refri
 var animIdle = "idle Watter"
 var animJump = "jump Watter"
 var animRum = "run watter"
-
-
 # Ghosting
 @onready var ghost_scene = preload("res://sprite_2d.tscn")
 var ghost_timer = 0.01  # Tempo entre fantasmas
@@ -195,8 +193,10 @@ func follow_camera(camera):
 	var camera_path = camera.get_path()
 	remote_transform.remote_path = camera_path
 func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
-	player_life -= 1
-	
+	if player_life >0:
+		player_life -= 1
+	else:
+		queue_free()
 	if knockback_force != Vector2.ZERO:
 		knockback_vector = knockback_force
 		

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var direction := -1
+@export var direction := -1
 const SPEED = 100.0
 @onready var texture := $AnimatedSprite2D
 @onready var wall_detector := $wall_detector
