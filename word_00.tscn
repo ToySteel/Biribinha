@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://biesiabwkl8gw"]
+[gd_scene load_steps=41 format=3 uid="uid://biesiabwkl8gw"]
 
 [ext_resource type="Texture2D" uid="uid://dnnpt6apsdd4k" path="res://assests/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="1_2w2me"]
 [ext_resource type="Script" path="res://word_00.gd" id="1_fqm5r"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://color__rect.gd" id="20_beqen"]
 [ext_resource type="PackedScene" uid="uid://cr5byayclcbtf" path="res://enemy.tscn" id="21_j1b3x"]
 [ext_resource type="Script" path="res://spikes.gd" id="25_yio8q"]
+[ext_resource type="FontFile" uid="uid://bqwtw7rvccsrw" path="res://sprites/RevMiniPixel.ttf" id="26_14tr3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i1d8t"]
 texture = ExtResource("1_2w2me")
@@ -298,7 +299,8 @@ texture = ExtResource("1_2w2me")
 4:8/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_apssx"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_i1d8t")
 sources/1 = SubResource("TileSetAtlasSource_jh2ln")
 sources/2 = SubResource("TileSetAtlasSource_y7e4q")
@@ -324,7 +326,10 @@ shader_parameter/line_color_a = Color(1, 1, 1, 1)
 shader_parameter/line_color_b = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3d2f"]
-size = Vector2(376, 8)
+size = Vector2(619, 6.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tc1nd"]
+size = Vector2(372, 20)
 
 [node name="word-01" type="Node2D"]
 script = ExtResource("1_fqm5r")
@@ -342,8 +347,7 @@ layer_2/tile_data = PackedInt32Array(1966081, 262144, 1, 1966082, 262144, 1, 196
 
 [node name="player" parent="." instance=ExtResource("7_0ir80")]
 position = Vector2(76, 443)
-collision_layer = 33
-player_life = 3
+player_life = 999
 
 [node name="CocaRefri" parent="." instance=ExtResource("13_vm6us")]
 position = Vector2(1659, 443)
@@ -512,19 +516,91 @@ limit_right = 2800
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(357, 437)
+collision_layer = 4
 script = ExtResource("25_yio8q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(291.5, 7)
+position = Vector2(302.5, 6.625)
 shape = SubResource("RectangleShape2D_j3d2f")
 
 [node name="Area2D2" type="Area2D" parent="."]
-position = Vector2(1794, 288)
+position = Vector2(1966, 279)
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("25_yio8q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2(185, 8)
-shape = SubResource("RectangleShape2D_j3d2f")
+position = Vector2(11, 24)
+shape = SubResource("RectangleShape2D_tc1nd")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="container" type="MarginContainer" parent="HUD/control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="timer_container" type="HBoxContainer" parent="HUD/control/container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="timer_label" type="Label" parent="HUD/control/container/timer_container"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("26_14tr3")
+text = "TIME:"
+vertical_alignment = 1
+
+[node name="timer_counter" type="Label" parent="HUD/control/container/timer_container"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("26_14tr3")
+text = "00:00"
+vertical_alignment = 1
+
+[node name="life_container" type="HBoxContainer" parent="HUD/control/container"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="life_icon" type="TextureRect" parent="HUD/control/container/life_container"]
+layout_mode = 2
+
+[node name="life separator" type="Label" parent="HUD/control/container/life_container"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("26_14tr3")
+text = "X"
+vertical_alignment = 1
+
+[node name="life counter" type="Label" parent="HUD/control/container/life_container"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("26_14tr3")
+text = "03
+"
+vertical_alignment = 1
 
 [connection signal="Bug_fixer" from="player" to="sprites refri/SpriteRefri" method="_on_player_bug_fixer"]
 [connection signal="Coca_refri" from="CocaRefri" to="player" method="_on_coca_refri_coca_refri"]

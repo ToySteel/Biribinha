@@ -10,7 +10,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	if wall_detector.is_colliding():
+	if wall_detector.is_colliding(): 
 		direction *= -1
 		wall_detector.scale.x *= -1
 	if direction == 1:
