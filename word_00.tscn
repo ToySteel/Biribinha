@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://biesiabwkl8gw"]
+[gd_scene load_steps=47 format=3 uid="uid://biesiabwkl8gw"]
 
 [ext_resource type="Texture2D" uid="uid://dnnpt6apsdd4k" path="res://assests/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="1_2w2me"]
 [ext_resource type="Script" path="res://word_00.gd" id="1_fqm5r"]
@@ -28,6 +28,7 @@
 [ext_resource type="FontFile" uid="uid://bqwtw7rvccsrw" path="res://sprites/RevMiniPixel.ttf" id="26_14tr3"]
 [ext_resource type="Script" path="res://hud_manager.gd" id="26_hxutm"]
 [ext_resource type="Texture2D" uid="uid://4h02hrsq6ed4" path="res://biriba vida (2) (1).png" id="27_1oupx"]
+[ext_resource type="PackedScene" uid="uid://dyevjcs02fhs7" path="res://checkpoint.tscn" id="29_i55k7"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_qtsxa"]
 tile_data = PackedInt32Array(0, 589824, 3, 1, 851974, 3)
@@ -661,6 +662,9 @@ theme_override_fonts/font = ExtResource("26_14tr3")
 text = "03
 "
 vertical_alignment = 1
+
+[node name="CHECKPOINT" parent="." instance=ExtResource("29_i55k7")]
+position = Vector2(595, 420)
 
 [connection signal="Bug_fixer" from="player" to="sprites refri/SpriteRefri" method="_on_player_bug_fixer"]
 [connection signal="Coca_refri" from="CocaRefri" to="player" method="_on_coca_refri_coca_refri"]
