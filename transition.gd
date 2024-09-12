@@ -1,9 +1,9 @@
 extends CanvasLayer
 @onready var color_rect = $color_rect
 
-func change_scene(path, delay = 2.5):
+func change_scene(path):
 	var scene_transition = get_tree().create_tween()
-	scene_transition.tween_property(color_rect, "threshold", 1.0, 0.5).set_delay(delay)
+	scene_transition.tween_property(color_rect, "threshold", 1.0, 0.5)
 	await scene_transition.finished
 	assert(get_tree().change_scene_to_file(path) == OK)
 
