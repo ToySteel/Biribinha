@@ -3,7 +3,7 @@ extends CharacterBody2D
 #Variáveis básicas
 const SPEED = 150.0
 const JUMP_FORCE = -400.0
-@export var player_life := 10
+#@export var player_life := 10
 var knockback_vector := Vector2.ZERO
 var direction
 #Pulo duplo
@@ -26,6 +26,7 @@ signal Agua_refri
 #@onready var animationSprite := $animSprite
 #@onready var animationCoca := $animCola
 @onready var remote_transform := $remote
+signal player_has_died()
 #variaveis de animaçao
 var animIdle = "idle Watter"
 var animJump = "jump Watter"
@@ -182,7 +183,7 @@ func spawn_ghost(delta):
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	#if body.is_in_group("enemies"):
 		#queue_free()
-		if player_life <0:
+		if Globals.player_life <0:
 			queue_free()
 		else:
 			if $ray_right.is_colliding():
@@ -193,14 +194,17 @@ func follow_camera(camera):
 	var camera_path = camera.get_path()
 	remote_transform.remote_path = camera_path
 func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
-	if player_life >0:
-		player_life -= 1
+	if Globals.player_life >0:
+		Globals.player_life -= 1
+		if knockback_force != Vector2.ZERO:
+			knockback_vector = knockback_force
+			
+			var knockback_tween := get_tree().create_tween()
+			knockback_tween.tween_property(self, "knockback_vector", Vector2.ZERO, duration)
+			animation.modulate = Color(1, 0.426, 0.357)
+			knockback_tween.tween_property(animation, "modulate", Color(1, 1, 1, 1), duration)
 	else:
 		queue_free()
-	if knockback_force != Vector2.ZERO:
-		knockback_vector = knockback_force
+		emit_signal("Agua_refri")
+		emit_signal("player_has_died")
 		
-		var knockback_tween := get_tree().create_tween()
-		knockback_tween.tween_property(self, "knockback_vector", Vector2.ZERO, duration)
-		animation.modulate = Color(1, 0.426, 0.357)
-		knockback_tween.tween_property(animation, "modulate", Color(1, 1, 1, 1), duration)

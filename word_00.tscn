@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://biesiabwkl8gw"]
+[gd_scene load_steps=43 format=3 uid="uid://biesiabwkl8gw"]
 
 [ext_resource type="Texture2D" uid="uid://dnnpt6apsdd4k" path="res://assests/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="1_2w2me"]
 [ext_resource type="Script" path="res://word_00.gd" id="1_fqm5r"]
@@ -26,6 +26,8 @@
 [ext_resource type="PackedScene" uid="uid://cr5byayclcbtf" path="res://enemy.tscn" id="21_j1b3x"]
 [ext_resource type="Script" path="res://spikes.gd" id="25_yio8q"]
 [ext_resource type="FontFile" uid="uid://bqwtw7rvccsrw" path="res://sprites/RevMiniPixel.ttf" id="26_14tr3"]
+[ext_resource type="Script" path="res://hud_manager.gd" id="26_hxutm"]
+[ext_resource type="Texture2D" uid="uid://4h02hrsq6ed4" path="res://biriba vida (2) (1).png" id="27_1oupx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i1d8t"]
 texture = ExtResource("1_2w2me")
@@ -347,7 +349,6 @@ layer_2/tile_data = PackedInt32Array(1966081, 262144, 1, 1966082, 262144, 1, 196
 
 [node name="player" parent="." instance=ExtResource("7_0ir80")]
 position = Vector2(76, 443)
-player_life = 999
 
 [node name="CocaRefri" parent="." instance=ExtResource("13_vm6us")]
 position = Vector2(1659, 443)
@@ -542,6 +543,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("26_hxutm")
 
 [node name="container" type="MarginContainer" parent="HUD/control"]
 layout_mode = 1
@@ -584,6 +586,7 @@ size_flags_vertical = 0
 
 [node name="life_icon" type="TextureRect" parent="HUD/control/container/life_container"]
 layout_mode = 2
+texture = ExtResource("27_1oupx")
 
 [node name="life separator" type="Label" parent="HUD/control/container/life_container"]
 layout_mode = 2
