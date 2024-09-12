@@ -1,0 +1,239 @@
+[gd_scene load_steps=16 format=3 uid="uid://mf2bxxyfxc8o"]
+
+[ext_resource type="Texture2D" uid="uid://6ltqvl11nrhu" path="res://sprites/New Piskel (2).png" id="1_4lja4"]
+[ext_resource type="Script" path="res://titlescreen.gd" id="1_tm842"]
+[ext_resource type="Texture2D" uid="uid://dk8seyhay6lqj" path="res://cenario tela de inicio.png" id="2_qt8yy"]
+[ext_resource type="Texture2D" uid="uid://c8wownd1crud6" path="res://logo_do_jogo.png" id="3_a5qkl"]
+
+[sub_resource type="FontFile" id="FontFile_kqv1u"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvslf"]
+bg_color = Color(0, 0, 0, 0.192157)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0.313726, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lr5by"]
+bg_color = Color(1, 1, 1, 0.364706)
+
+[sub_resource type="Theme" id="Theme_iu6on"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/fonts/font = SubResource("FontFile_kqv1u")
+Button/styles/normal = SubResource("StyleBoxFlat_gvslf")
+Button/styles/pressed = SubResource("StyleBoxFlat_lr5by")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1t401"]
+bg_color = Color(0, 0, 0, 0.192157)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0.313726, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_m3u50"]
+Button/styles/normal = SubResource("StyleBoxFlat_1t401")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aj0fy"]
+bg_color = Color(0, 0, 0, 0.192157)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0.313726, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_eve4h"]
+Button/styles/normal = SubResource("StyleBoxFlat_aj0fy")
+
+[sub_resource type="Animation" id="Animation_up3x1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer/biriba game:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wnhrn"]
+resource_name = "reveal"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-400, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer/biriba game:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tugak"]
+_data = {
+"RESET": SubResource("Animation_up3x1"),
+"reveal": SubResource("Animation_wnhrn")
+}
+
+[node name="titlescreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tm842")
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 2
+anchor_right = 0.03125
+anchor_bottom = 0.065625
+offset_right = 620.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qt8yy")
+expand_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = 2.0
+offset_right = 75.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.00872665
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="logo" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+texture = ExtResource("3_a5qkl")
+
+[node name="start_btn" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_iu6on")
+text = "START"
+
+[node name="credits_btn" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_m3u50")
+text = "CREDITS"
+
+[node name="quit_btn" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_eve4h")
+text = "QUIT"
+
+[node name="biriba game" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_4lja4")
+expand_mode = 2
+
+[node name="Animationtitlescreen" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tugak")
+}
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/start_btn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/credits_btn" to="." method="_on_credits_btn_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]

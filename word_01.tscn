@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ddkp7q0eiltj5"]
+[gd_scene load_steps=32 format=3 uid="uid://ddkp7q0eiltj5"]
 
 [ext_resource type="Script" path="res://word_00.gd" id="1_ehmkr"]
 [ext_resource type="Texture2D" uid="uid://dnnpt6apsdd4k" path="res://assests/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="1_fspvp"]
@@ -8,18 +8,25 @@
 [ext_resource type="Texture2D" uid="uid://bfikujeas8ga3" path="res://assests/Seasonal Tilesets/5 - Misc. universal tiles/Blocks (16 x 16).png" id="5_ebroi"]
 [ext_resource type="Texture2D" uid="uid://byl5gsdnrdgo1" path="res://assests/Seasonal Tilesets/2 - Autumn Forest/Terrain (16 x 16).png" id="6_foprl"]
 [ext_resource type="PackedScene" uid="uid://42jet4a0ytc0" path="res://player.tscn" id="7_4p1x4"]
+[ext_resource type="Texture2D" uid="uid://5gdhar231lff" path="res://assests/Terrain_16_x_16 city.png" id="8_2pxmv"]
 [ext_resource type="PackedScene" uid="uid://cscub52dbk2v4" path="res://Coca_refri_bottle.tscn" id="9_87sa1"]
-[ext_resource type="Texture2D" uid="uid://c2uigfdao4rt4" path="res://assests/Seasonal Tilesets/1 - Grassland/Background parts/5 - Sky_color.png" id="12_83a2g"]
-[ext_resource type="Texture2D" uid="uid://bw1st2j13v36a" path="res://assests/Seasonal Tilesets/1 - Grassland/Background parts/3 - Cloud_cover_1.png" id="13_d3hxh"]
-[ext_resource type="Texture2D" uid="uid://obryc6vh2ehs" path="res://assests/Seasonal Tilesets/1 - Grassland/Background parts/4 - Cloud_cover_2.png" id="14_ev416"]
-[ext_resource type="Texture2D" uid="uid://dhdhwwheguo66" path="res://assests/Seasonal Tilesets/1 - Grassland/Background parts/2 - Hills.png" id="15_n0b7e"]
-[ext_resource type="Texture2D" uid="uid://b0alic3aovhqf" path="res://assests/Seasonal Tilesets/1 - Grassland/Background parts/1 - Foreground_scenery.png" id="16_j5ui6"]
+[ext_resource type="Texture2D" uid="uid://cys48dxe7340j" path="res://assests/1.png" id="11_bp7uo"]
+[ext_resource type="Texture2D" uid="uid://cxoajhjlrbqqo" path="res://assests/2.png" id="12_yxt12"]
+[ext_resource type="Texture2D" uid="uid://bi1o0lcsisv05" path="res://assests/3.png" id="13_ljw48"]
+[ext_resource type="Texture2D" uid="uid://segkx4yfqphy" path="res://assests/4.png" id="14_lw27u"]
+[ext_resource type="Texture2D" uid="uid://ba3w6pwf4xi43" path="res://assests/5.png" id="15_eqe24"]
 [ext_resource type="PackedScene" uid="uid://dvvfgn46d8qrq" path="res://goal.tscn" id="17_fmgbt"]
 [ext_resource type="Script" path="res://transition.gd" id="18_u4s26"]
 [ext_resource type="Shader" path="res://shade/transition.gdshader" id="19_gqt3f"]
 [ext_resource type="Script" path="res://color__rect.gd" id="20_sboek"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i1d8t"]
+[sub_resource type="TileMapPattern" id="TileMapPattern_qtsxa"]
+tile_data = PackedInt32Array(0, 589824, 3, 1, 851974, 3)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_gm2pk"]
+tile_data = PackedInt32Array(0, 589824, 3, 1, 851968, 3)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ummtk"]
 texture = ExtResource("1_fspvp")
 3:1/0 = 0
 3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -100,7 +107,7 @@ texture = ExtResource("1_fspvp")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jh2ln"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ci7m"]
 texture = ExtResource("2_vjxdy")
 1:1/0 = 0
 2:1/0 = 0
@@ -150,7 +157,7 @@ texture = ExtResource("2_vjxdy")
 16:5/0 = 0
 18:5/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y7e4q"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6svt8"]
 texture = ExtResource("3_hs1vb")
 0:0/0 = 0
 1:0/0 = 0
@@ -161,10 +168,10 @@ texture = ExtResource("3_hs1vb")
 2:1/0 = 0
 3:1/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g6jpi"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f8pm3"]
 texture = ExtResource("4_6n1nk")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ytppe"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nhh41"]
 texture = ExtResource("5_ebroi")
 1:1/0 = 0
 3:1/0 = 0
@@ -184,7 +191,7 @@ texture = ExtResource("5_ebroi")
 7:4/0 = 0
 9:4/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t6uce"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iah6p"]
 texture = ExtResource("6_foprl")
 3:1/0 = 0
 3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -248,7 +255,7 @@ texture = ExtResource("6_foprl")
 5:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:8/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5eax5"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vxk0m"]
 resource_name = "SEM COLI"
 texture = ExtResource("1_fspvp")
 3:1/0 = 0
@@ -290,15 +297,94 @@ texture = ExtResource("1_fspvp")
 5:6/0 = 0
 4:8/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_apssx"]
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_i1d8t")
-sources/1 = SubResource("TileSetAtlasSource_jh2ln")
-sources/2 = SubResource("TileSetAtlasSource_y7e4q")
-sources/3 = SubResource("TileSetAtlasSource_g6jpi")
-sources/4 = SubResource("TileSetAtlasSource_ytppe")
-sources/5 = SubResource("TileSetAtlasSource_t6uce")
-sources/6 = SubResource("TileSetAtlasSource_5eax5")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2j3y4"]
+texture = ExtResource("8_2pxmv")
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:1/0 = 0
+11:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:2/0 = 0
+11:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:3/0 = 0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:3/0 = 0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:3/0 = 0
+6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:3/0 = 0
+7:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:3/0 = 0
+9:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+10:3/0 = 0
+10:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:3/0 = 0
+11:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+12:3/0 = 0
+12:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:3/0 = 0
+13:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+15:3/0 = 0
+1:4/0 = 0
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:4/0 = 0
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:4/0 = 0
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:4/0 = 0
+5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:4/0 = 0
+6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:4/0 = 0
+7:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:4/0 = 0
+11:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:5/0 = 0
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:5/0 = 0
+4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:5/0 = 0
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:5/0 = 0
+11:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:6/0 = 0
+3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:6/0 = 0
+4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:6/0 = 0
+5:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:8/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_xq00p"]
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 5
+sources/0 = SubResource("TileSetAtlasSource_ummtk")
+sources/1 = SubResource("TileSetAtlasSource_4ci7m")
+sources/2 = SubResource("TileSetAtlasSource_6svt8")
+sources/3 = SubResource("TileSetAtlasSource_f8pm3")
+sources/4 = SubResource("TileSetAtlasSource_nhh41")
+sources/5 = SubResource("TileSetAtlasSource_iah6p")
+sources/6 = SubResource("TileSetAtlasSource_vxk0m")
+sources/7 = SubResource("TileSetAtlasSource_2j3y4")
+pattern_0 = SubResource("TileMapPattern_qtsxa")
+pattern_1 = SubResource("TileMapPattern_gm2pk")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y16ui"]
 shader = ExtResource("19_gqt3f")
@@ -310,83 +396,63 @@ shader_parameter/line_color_b = Color(0, 0, 0, 1)
 [node name="word-01" type="Node2D"]
 script = ExtResource("1_ehmkr")
 
-[node name="level" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_apssx")
+[node name="level2" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_xq00p")
 format = 2
-layer_0/name = "decorations2"
-layer_1/name = "sombra"
-layer_2/name = "Liquids"
-layer_3/name = "ground"
-layer_3/tile_data = PackedInt32Array(2031615, 327680, 3, 1966079, 327680, 2, 1900543, 327680, 2, 1835007, 327680, 2, 1769471, 327680, 2, 1703935, 327680, 2, 1638399, 327680, 4, 2097151, 262144, 2, 4063233, 262144, 1, 4063234, 262144, 1, 4063235, 262144, 1, 4063236, 262144, 1, 4063237, 262144, 1, 4063238, 262144, 1, 4063239, 262144, 1, 4063240, 262144, 1, 4063241, 262144, 1, 4063242, 262144, 1, 4063243, 262144, 1, 4063244, 262144, 1, 4063245, 262144, 1, 4063246, 262144, 1, 4063247, 262144, 1, 4063248, 262144, 1, 4063249, 262144, 1, 4063250, 262144, 1, 4063251, 262144, 1, 4063252, 262144, 1, 4063253, 262144, 1, 4063254, 262144, 1, 4063255, 262144, 1, 4063256, 262144, 1, 4063257, 262144, 1, 4063258, 262144, 1, 4063259, 262144, 1, 4063260, 262144, 1, 4063261, 262144, 1, 4063262, 262144, 1, 4063263, 262144, 1, 4063264, 262144, 1, 4063265, 262144, 1, 4063266, 262144, 1, 4063267, 262144, 1, 4063268, 262144, 1, 4063269, 262144, 1, 4063270, 262144, 1, 4063271, 262144, 1, 4063272, 262144, 1, 4063273, 262144, 1, 4063274, 262144, 1, 4063275, 262144, 1, 4063276, 262144, 1, 4063277, 262144, 1, 4063278, 262144, 1, 4063279, 262144, 1, 4063280, 262144, 1, 4063281, 262144, 1, 4063282, 262144, 1, 4063283, 262144, 1, 4063284, 262144, 1, 4063285, 262144, 1, 4063286, 262144, 1, 4063287, 262144, 1, 4063288, 262144, 1, 4063289, 262144, 1, 4063290, 262144, 1, 4063291, 262144, 1, 4063292, 262144, 1, 4063293, 262144, 1, 4063294, 262144, 1, 4063295, 262144, 1, 4063296, 262144, 1, 4063297, 262144, 1, 4063298, 262144, 1, 4063299, 262144, 1, 4063300, 262144, 1, 4063301, 262144, 1, 4063302, 262144, 1, 4063303, 262144, 1, 4063304, 262144, 1, 4063305, 262144, 1, 4063306, 262144, 1, 4063307, 262144, 1, 4063308, 262144, 1, 4063309, 262144, 1, 4063310, 262144, 1, 4063311, 262144, 1, 4063312, 262144, 1, 4063313, 262144, 1)
+layer_0/name = "cave"
+layer_0/modulate = Color(0.442911, 0.442911, 0.442911, 1)
+layer_1/name = "Liquids"
+layer_2/name = "ground"
+layer_2/tile_data = PackedInt32Array(1310720, 262151, 1, 1310721, 262151, 1, 1310722, 262151, 1, 1376258, 262151, 1, 1310723, 262151, 1, 1376259, 262151, 1, 1310724, 262151, 1, 1376260, 262151, 1, 1310725, 262151, 1, 1376261, 262151, 1, 1310726, 262151, 1, 1376262, 262151, 1, 1310727, 262151, 1, 1376263, 262151, 1, 1310728, 262151, 1, 1376264, 262151, 1, 1310729, 262151, 1, 1376265, 262151, 1, 1310730, 262151, 1, 1376266, 262151, 1, 1310731, 262151, 1, 1310732, 262151, 1, 1310733, 262151, 1, 1310734, 262151, 1, 1310735, 262151, 1, 1310736, 262151, 1, 1310737, 262151, 1, 1310738, 262151, 1, 1310739, 262151, 1, 1310740, 262151, 1, 1310741, 262151, 1, 1310742, 262151, 1, 1310743, 262151, 1, 1310744, 262151, 1, 1310745, 262151, 1, 1310746, 262151, 1, 1310747, 262151, 1, 1310748, 262151, 1, 1310749, 262151, 1, 1310750, 262151, 1, 1310751, 262151, 1, 1310752, 262151, 1, 1310753, 262151, 1, 1310754, 262151, 1, 1310755, 262151, 1, 1310756, 262151, 1, 1310757, 262151, 1, 1310758, 262151, 1, 1310759, 262151, 1, 1376295, 262151, 1, 1310760, 262151, 1, 1376296, 262151, 1, 1310761, 262151, 1, 1376297, 262151, 1, 1310762, 262151, 1, 1376298, 262151, 1, 1310763, 262151, 1, 1376299, 262151, 1, 1310764, 262151, 1, 1376300, 262151, 1, 1310765, 262151, 1, 1376301, 262151, 1, 1310766, 262151, 1, 1376302, 262151, 1, 1310767, 262151, 1, 1376303, 262151, 1, 1310768, 262151, 1, 1376304, 262151, 1, 1310769, 262151, 1, 1376305, 262151, 1, 1310770, 262151, 1, 1376306, 262151, 1, 1310771, 262151, 1, 1376307, 262151, 1, 1310772, 262151, 1, 1376308, 262151, 1)
 
 [node name="player" parent="." instance=ExtResource("7_4p1x4")]
+position = Vector2(35, 296)
 
 [node name="CocaRefri" parent="." instance=ExtResource("9_87sa1")]
 position = Vector2(961, 806)
 
-[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
-motion_mirroring = Vector2(432, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer"]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("12_83a2g")
-centered = false
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground2"]
-motion_mirroring = Vector2(432, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer3"]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("13_d3hxh")
-centered = false
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scale = Vector2(0.67, 0.67)
+transform = Transform2D(0.67, 0, 0, 0.67, 0, 0)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 177)
-motion_mirroring = Vector2(432, 0)
+motion_mirroring = Vector2(385.92, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("12_83a2g")
+texture = ExtResource("11_bp7uo")
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 177)
-motion_mirroring = Vector2(432, 0)
+motion_mirroring = Vector2(385.92, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("14_ev416")
+texture = ExtResource("12_yxt12")
 centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 177)
-motion_mirroring = Vector2(432, 0)
+motion_mirroring = Vector2(385.92, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("13_d3hxh")
+texture = ExtResource("13_ljw48")
 centered = false
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 177)
-motion_mirroring = Vector2(432, 0)
+motion_mirroring = Vector2(385.92, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("15_n0b7e")
+texture = ExtResource("14_lw27u")
 centered = false
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 177)
-motion_mirroring = Vector2(432, 0)
+motion_mirroring = Vector2(385.92, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("16_j5ui6")
+texture = ExtResource("15_eqe24")
 centered = false
 
 [node name="goal" parent="." instance=ExtResource("17_fmgbt")]
