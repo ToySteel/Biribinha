@@ -18,6 +18,7 @@ const DASH_SPEED = 900.0
 var dashing = false
 var dash_direction = 0
 var can_dash = false
+var eu_nao_aguento_mais = false
 #sinais
 signal Bug_fixer
 signal Agua_refri
@@ -31,6 +32,7 @@ signal player_has_died()
 var animIdle = "idle Watter"
 var animJump = "jump Watter"
 var animRum = "run watter"
+var animDie = "die watter"
 # Ghosting
 @onready var ghost_scene = preload("res://sprite_2d.tscn")
 var ghost_timer = 0.01  # Tempo entre fantasmas
@@ -107,6 +109,7 @@ func _on_agua_refri():
 	animIdle = "idle Watter"
 	animJump = "jump Watter"
 	animRum = "run watter"
+	animDie = "die watter"
 	#get_node("anim").visible = true
 	#get_node("animSprite").visible = false
 	#get_node("animCola").visible = false
@@ -118,6 +121,7 @@ func _on_sprite_refri_sprite_refri():
 	animIdle = "Idle Sprite"
 	animJump = "jump sprite"
 	animRum = "Run Sprite"
+	animDie = "die sprite"
 	#get_node("anim").visible = false
 	#get_node("animSprite").visible = true
 	#get_node("animCola").visible = false
@@ -134,6 +138,7 @@ func _on_coca_refri_coca_refri():
 	animIdle = "idle Cola"
 	animJump = "Jump Cola"
 	animRum = "run Cola"
+	animDie = "die coca"
 	#get_node("anim").visible = true
 	#get_node("animSprite").visible = false
 	#get_node("animCola").visible = true
@@ -141,6 +146,8 @@ func _on_coca_refri_coca_refri():
 #animaçoes legais
 func _set_state():
 	var state = animIdle
+	if eu_nao_aguento_mais:
+		state = animDie
 	if dashing:
 		state = "dash cola"
 	if !is_on_floor():
@@ -204,6 +211,10 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 			animation.modulate = Color(1, 0.426, 0.357)
 			knockback_tween.tween_property(animation, "modulate", Color(1, 1, 1, 1), duration)
 	else:
+		eu_nao_aguento_mais = true
+		$die_timer.start()
+func _on_die_timer_timeout():
+	if eu_nao_aguento_mais:
+		eu_nao_aguento_mais = false
 		emit_signal("Agua_refri")
 		emit_signal("player_has_died")
-		

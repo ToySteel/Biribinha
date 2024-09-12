@@ -7,7 +7,7 @@ extends Node2D
 func _ready() -> void:
 	Globals.player = player
 	Globals.player.follow_camera(camera)
-	Globals.player.player_has_died.connect(reload_game)
+	player.player_has_died.connect(reload_game)
 	Globals.player_life = 3
 
 
@@ -17,11 +17,11 @@ func _process(delta: float) -> void:
 	pass
 
 func reload_game():
-	await get_tree().create_timer(1.0)
-	var player = player_scene.instantiate()
-	add_child(player)
+	await get_tree().create_timer(5.0)
+	var player2 = player_scene.instantiate()
 	Globals.player = player
 	Globals.player.follow_camera(camera)
 	Globals.player.player_has_died.connect(reload_game)
+	Globals.player_life = 3 
 	Globals.respawn_player()
 	# get_tree().reload_current_scene()
