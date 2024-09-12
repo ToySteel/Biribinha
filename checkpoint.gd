@@ -9,6 +9,7 @@ func _on_body_entered(body: Node2D) -> void:
 	activate_checkpoint()
 
 func activate_checkpoint():
+	Globals.current_checkpoint = self
 	animation_checkpoint.play("raising")
 	if animation_checkpoint.animation == "raising":
 		animation_checkpoint.play("cheked")

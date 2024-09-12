@@ -664,7 +664,7 @@ text = "03
 vertical_alignment = 1
 
 [node name="CHECKPOINT" parent="." instance=ExtResource("29_i55k7")]
-position = Vector2(595, 420)
+position = Vector2(622, 418)
 
 [connection signal="Bug_fixer" from="player" to="sprites refri/SpriteRefri" method="_on_player_bug_fixer"]
 [connection signal="Coca_refri" from="CocaRefri" to="player" method="_on_coca_refri_coca_refri"]
