@@ -184,7 +184,7 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 	#if body.is_in_group("enemies"):
 		#queue_free()
 		if Globals.player_life <0:
-			queue_free()
+			return
 		else:
 			if $ray_right.is_colliding():
 				take_damage(Vector2(-200,-200))
@@ -204,7 +204,6 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 			animation.modulate = Color(1, 0.426, 0.357)
 			knockback_tween.tween_property(animation, "modulate", Color(1, 1, 1, 1), duration)
 	else:
-		queue_free()
 		emit_signal("Agua_refri")
 		emit_signal("player_has_died")
 		

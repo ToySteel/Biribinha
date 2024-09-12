@@ -505,7 +505,7 @@ position = Vector2(2493, 388)
 position = Vector2(2493, 335)
 
 [node name="SpriteRefri7" parent="sprites refri" instance=ExtResource("12_k6grv")]
-position = Vector2(2492, 454)
+position = Vector2(2500, 461)
 
 [node name="SpriteRefri8" parent="sprites refri" instance=ExtResource("12_k6grv")]
 position = Vector2(2493, 282)
@@ -664,13 +664,13 @@ text = "03
 vertical_alignment = 1
 
 [node name="CHECKPOINT" parent="." instance=ExtResource("29_i55k7")]
-position = Vector2(622, 418)
+position = Vector2(622, 399)
 
 [node name="CHECKPOINT2" parent="." instance=ExtResource("29_i55k7")]
-position = Vector2(1113, 114)
+position = Vector2(1116, 95)
 
 [node name="CHECKPOINT3" parent="." instance=ExtResource("29_i55k7")]
-position = Vector2(2579, 482)
+position = Vector2(2583, 464)
 
 [connection signal="Bug_fixer" from="player" to="sprites refri/SpriteRefri" method="_on_player_bug_fixer"]
 [connection signal="Coca_refri" from="CocaRefri" to="player" method="_on_coca_refri_coca_refri"]

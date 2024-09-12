@@ -42,13 +42,11 @@ collision_layer = 2
 script = ExtResource("1_8in84")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, -19)
 sprite_frames = SubResource("SpriteFrames_q47c3")
 animation = &"raising"
 autoplay = "uncheked"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(2, -17.5)
 shape = SubResource("RectangleShape2D_662cy")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

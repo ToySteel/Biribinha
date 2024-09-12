@@ -7,7 +7,7 @@ extends Node2D
 func _ready() -> void:
 	Globals.player = player
 	Globals.player.follow_camera(camera)
-	player.player_has_died.connect(reload_game)
+	Globals.player.player_has_died.connect(reload_game)
 	Globals.player_life = 3
 
 
