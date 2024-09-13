@@ -1,5 +1,7 @@
 extends Node
 
+var global_minutes = 0
+var global_seconds = 0
 
 var player_life := 3
 

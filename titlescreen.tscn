@@ -1,18 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://mf2bxxyfxc8o"]
+[gd_scene load_steps=15 format=3 uid="uid://mf2bxxyfxc8o"]
 
 [ext_resource type="Texture2D" uid="uid://6ltqvl11nrhu" path="res://sprites/New Piskel (2).png" id="1_4lja4"]
 [ext_resource type="Script" path="res://titlescreen.gd" id="1_tm842"]
 [ext_resource type="Texture2D" uid="uid://dk8seyhay6lqj" path="res://cenario tela de inicio.png" id="2_qt8yy"]
 [ext_resource type="Texture2D" uid="uid://c8wownd1crud6" path="res://logo_do_jogo.png" id="3_a5qkl"]
+[ext_resource type="FontFile" uid="uid://bqwtw7rvccsrw" path="res://sprites/RevMiniPixel.ttf" id="4_n8es0"]
 
-[sub_resource type="FontFile" id="FontFile_kqv1u"]
+[sub_resource type="FontFile" id="FontFile_gt08v"]
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
 cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvslf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mmuc"]
 bg_color = Color(0, 0, 0, 0.192157)
 border_width_left = 1
 border_width_top = 1
@@ -24,31 +25,16 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lr5by"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_23604"]
 bg_color = Color(1, 1, 1, 0.364706)
 
 [sub_resource type="Theme" id="Theme_iu6on"]
 Button/colors/font_color = Color(1, 1, 1, 1)
-Button/fonts/font = SubResource("FontFile_kqv1u")
-Button/styles/normal = SubResource("StyleBoxFlat_gvslf")
-Button/styles/pressed = SubResource("StyleBoxFlat_lr5by")
+Button/fonts/font = SubResource("FontFile_gt08v")
+Button/styles/normal = SubResource("StyleBoxFlat_7mmuc")
+Button/styles/pressed = SubResource("StyleBoxFlat_23604")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1t401"]
-bg_color = Color(0, 0, 0, 0.192157)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0, 0, 0.313726, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="Theme" id="Theme_m3u50"]
-Button/styles/normal = SubResource("StyleBoxFlat_1t401")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aj0fy"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4867"]
 bg_color = Color(0, 0, 0, 0.192157)
 border_width_left = 1
 border_width_top = 1
@@ -61,7 +47,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="Theme" id="Theme_eve4h"]
-Button/styles/normal = SubResource("StyleBoxFlat_aj0fy")
+Button/styles/normal = SubResource("StyleBoxFlat_a4867")
 
 [sub_resource type="Animation" id="Animation_up3x1"]
 length = 0.001
@@ -208,20 +194,17 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = SubResource("Theme_iu6on")
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_n8es0")
 text = "START"
-
-[node name="credits_btn" type="Button" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = SubResource("Theme_m3u50")
-text = "CREDITS"
 
 [node name="quit_btn" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = SubResource("Theme_eve4h")
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_n8es0")
 text = "QUIT"
 
 [node name="biriba game" type="TextureRect" parent="HBoxContainer"]
@@ -235,5 +218,4 @@ libraries = {
 }
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/start_btn" to="." method="_on_start_btn_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/credits_btn" to="." method="_on_credits_btn_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]
