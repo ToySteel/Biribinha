@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cmtups4jbiiam"]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+
+[node name="collision" type="CollisionShape2D" parent="."]
+
+[node name="sprite" type="Sprite2D" parent="."]

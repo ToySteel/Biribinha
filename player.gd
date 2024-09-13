@@ -41,65 +41,65 @@ var time_since_last_ghost = 0
 	#emit_signal("Agua_refri")
 # Adiciona gravidade
 func _physics_process(delta):
-	# Aplica gravidade
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-	################################################################
-	# Reseta o pulo duplo ao tocar o chão
-	if is_on_floor():
-		if Sprite:
-			can_double_jump = true
-			has_double_jumped = false
-	
-	# Pulo simples e pulo duplo
-	if Input.is_action_just_pressed("ui_accept"):
+	if !eu_nao_aguento_mais:
+		if not is_on_floor():
+			velocity += get_gravity() * delta
+		################################################################
+		# Reseta o pulo duplo ao tocar o chão
 		if is_on_floor():
-			velocity.y = JUMP_FORCE
-		elif can_double_jump and !has_double_jumped:
-			velocity.y = JUMP_FORCE
-			has_double_jumped = true
-			can_double_jump = false
-			emit_signal("Agua_refri")
-	#dash
-	#########################################################
-	# Direção do dash
-	if Input.is_action_just_pressed("ui_left"):
-		dash_direction = -1
-	if Input.is_action_just_pressed("ui_right"):
-		dash_direction = 1
-	# Ativa o dash
-	if Input.is_action_just_pressed("ui_dash") and can_dash:
-		if Cola:
-			dashing = true
-			$dash_timer.start()
-	#durante o dash
-	if dashing:
-		velocity.x = dash_direction * DASH_SPEED
-		velocity.y = 0
-		spawn_ghost(delta)
-		get_node("anim").visible = false
-		#get_node("animSprite").visible = false
-		#get_node("animCola").visible = false
-		get_node("DashCola").visible = true
-		emit_signal("Bug_fixer")
-		can_dash = false
-	########################################################
-	# Movimento normal
-	direction = Input.get_axis("ui_left", "ui_right")
-	if !dashing:
-		if direction != 0:
-			animation.scale.x = direction
-			#animationSprite.scale.x = direction
-			#animationCoca.scale.x = direction
-			velocity.x = direction * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-	############################################################
-	
-	if knockback_vector != Vector2.ZERO:
-		velocity = knockback_vector
-	
-	
+			if Sprite:
+				can_double_jump = true
+				has_double_jumped = false
+		
+		# Pulo simples e pulo duplo
+		if Input.is_action_just_pressed("ui_accept"):
+			if is_on_floor():
+				velocity.y = JUMP_FORCE
+			elif can_double_jump and !has_double_jumped:
+				velocity.y = JUMP_FORCE
+				has_double_jumped = true
+				can_double_jump = false
+				emit_signal("Agua_refri")
+		#dash
+		#########################################################
+		# Direção do dash
+		if Input.is_action_just_pressed("ui_left"):
+			dash_direction = -1
+		if Input.is_action_just_pressed("ui_right"):
+			dash_direction = 1
+		# Ativa o dash
+		if Input.is_action_just_pressed("ui_dash") and can_dash:
+			if Cola:
+				dashing = true
+				$dash_timer.start()
+		#durante o dash
+		if dashing:
+			velocity.x = dash_direction * DASH_SPEED
+			velocity.y = 0
+			spawn_ghost(delta)
+			get_node("anim").visible = false
+			#get_node("animSprite").visible = false
+			#get_node("animCola").visible = false
+			get_node("DashCola").visible = true
+			emit_signal("Bug_fixer")
+			can_dash = false
+		########################################################
+		# Movimento normal
+		direction = Input.get_axis("ui_left", "ui_right")
+		if !dashing:
+			if direction != 0:
+				animation.scale.x = direction
+				#animationSprite.scale.x = direction
+				#animationCoca.scale.x = direction
+				velocity.x = direction * SPEED
+			else:
+				velocity.x = move_toward(velocity.x, 0, SPEED)
+		############################################################
+		
+		if knockback_vector != Vector2.ZERO:
+			velocity = knockback_vector
+		
+		
 	_set_state()
 	move_and_slide()
 #voltar a estado inicial
@@ -148,12 +148,13 @@ func _set_state():
 	var state = animIdle
 	if eu_nao_aguento_mais:
 		state = animDie
-	if dashing:
-		state = "dash cola"
-	if !is_on_floor():
-		state = animJump
-	elif direction != 0:
-		state = animRum
+	else:
+		if dashing:
+			state = "dash cola"
+		if !is_on_floor():
+			state = animJump
+		elif direction != 0:
+			state = animRum
 		
 	if animation.name != state:
 		animation.play(state)
