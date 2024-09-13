@@ -560,55 +560,29 @@ position = Vector2(454, 259)
 [node name="enemy2" parent="." instance=ExtResource("21_tvtyx")]
 position = Vector2(1071, 217)
 
-[node name="enemy3" parent="." instance=ExtResource("21_tvtyx")]
-position = Vector2(2695, 437)
-
 [node name="enemy4" parent="." instance=ExtResource("21_tvtyx")]
-position = Vector2(2918, 437)
+position = Vector2(2891, 449)
 
 [node name="enemy5" parent="." instance=ExtResource("21_tvtyx")]
-position = Vector2(2808, 439)
-
-[node name="enemy9" parent="." instance=ExtResource("21_tvtyx")]
-position = Vector2(2857, 434)
-
-[node name="enemy12" parent="." instance=ExtResource("21_tvtyx")]
-position = Vector2(2671, 437)
-
-[node name="enemy14" parent="." instance=ExtResource("21_tvtyx")]
-position = Vector2(2889, 443)
+position = Vector2(2771, 446)
 
 [node name="enemy15" parent="." instance=ExtResource("21_tvtyx")]
-position = Vector2(2833, 441)
-collision_mask = 7
+position = Vector2(2835, 449)
 
 [node name="enemy17" parent="." instance=ExtResource("21_tvtyx")]
-position = Vector2(2718, 439)
-collision_mask = 7
-
-[node name="enemy18" parent="." instance=ExtResource("21_tvtyx")]
-position = Vector2(2628, 442)
-collision_mask = 7
-
-[node name="enemy19" parent="." instance=ExtResource("21_tvtyx")]
-position = Vector2(2603, 447)
-collision_mask = 7
+position = Vector2(2654, 443)
 
 [node name="enemy20" parent="." instance=ExtResource("21_tvtyx")]
-position = Vector2(2759, 442)
-collision_mask = 7
+position = Vector2(2717, 445)
 
 [node name="enemy21" parent="." instance=ExtResource("21_tvtyx")]
-position = Vector2(2992, 439)
-collision_mask = 7
+position = Vector2(2991, 451)
 
 [node name="enemy22" parent="." instance=ExtResource("21_tvtyx")]
-position = Vector2(3043, 444)
-collision_mask = 7
+position = Vector2(3027, 448)
 
 [node name="enemy29" parent="." instance=ExtResource("21_tvtyx")]
-position = Vector2(2954, 449)
-collision_mask = 7
+position = Vector2(2943, 449)
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(2757, 186)
