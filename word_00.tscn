@@ -673,6 +673,11 @@ position = Vector2(1116, 95)
 [node name="CHECKPOINT3" parent="." instance=ExtResource("29_i55k7")]
 position = Vector2(2578, 448)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -22.18
+pitch_scale = 0.61
+autoplay = true
+
 [connection signal="Bug_fixer" from="player" to="sprites refri/SpriteRefri" method="_on_player_bug_fixer"]
 [connection signal="body_entered" from="key2" to="key2" method="_on_body_entered"]
 [connection signal="item_collected" from="key2" to="door2" method="_on_key_2_item_collected"]
